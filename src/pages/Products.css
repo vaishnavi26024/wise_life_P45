@@ -486,3 +486,40 @@ html, body {
   transform: translateX(-50%) translateY(-2px);
   box-shadow: 0 12px 28px rgba(10, 37, 64, 0.25);
 }
+/* ===================== */
+/* BACKGROUND VIDEO */
+/* ===================== */
+
+.wl-products {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Video layer */
+.wl-bg-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  z-index: 0;
+  opacity: 0.9; /* adjust between 0.25–0.4 */
+}
+
+/* Soft white overlay for readability */
+.wl-products::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+background: rgba(248, 250, 252, 0.55);
+  z-index: 0;
+}
+
+/* Ensure products appear above video */
+.wl-products-inner {
+  position: relative;
+  z-index: 1;
+}
