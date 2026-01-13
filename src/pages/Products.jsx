@@ -4,6 +4,9 @@ import "./Products.css";
 import wiseLifeLogo from "../assets/logo/wiselife-logo.png";
 import { useNavigate } from "react-router-dom";
 
+// 👉 IMPORT YOUR VIDEO HERE
+import bgVideo from "../assets/video/green-energy.mp4";
+
 export default function Products() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
@@ -66,15 +69,23 @@ export default function Products() {
         </div>
       </section>
 
-      {/* PRODUCTS GRID */}
+      {/* PRODUCTS GRID WITH BACKGROUND VIDEO */}
       <section className="wl-products">
+        {/* BACKGROUND VIDEO */}
+        <video
+          className="wl-bg-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={bgVideo} type="video/mp4" />
+        </video>
+
+        {/* PRODUCTS CONTENT */}
         <div className="wl-products-inner">
           {filteredProducts.map((item) => (
-            <div
-              className="wl-product-row"
-              key={item.id}
-              onClick={() => navigate(`/product/${item.id}`)}
-            >
+            <div className="wl-product-row" key={item.id}>
               {/* IMAGE */}
               <div className="wl-product-image">
                 <img src={item.image} alt={item.name} />
@@ -82,9 +93,7 @@ export default function Products() {
 
               {/* INFO */}
               <div className="wl-product-info">
-                <span
-                  className={`wl-badge ${item.category.toLowerCase()}`}
-                >
+                <span className={`wl-badge ${item.category.toLowerCase()}`}>
                   {item.category}
                 </span>
                 <h2>{item.name}</h2>
@@ -93,12 +102,7 @@ export default function Products() {
               {/* ACTION */}
               <div className="wl-product-action">
                 <div className="price">{item.price}</div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert("Order flow coming soon");
-                  }}
-                >
+                <button onClick={() => navigate(`/product/${item.id}`)}>
                   Order Now
                 </button>
               </div>
