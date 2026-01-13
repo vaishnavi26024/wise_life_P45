@@ -1,0 +1,95 @@
+/* Wrapper */
+.navbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: navbarReveal 0.8s ease forwards;
+}
+
+/* Slide-down animation */
+@keyframes navbarReveal {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Navbar container */
+.navbar {
+  height: 72px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #0b2c4d; /* Deep Blue */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* LOGO */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo-wise {
+  color: #ffffff; /* White */
+}
+
+.logo-life {
+  color: #2ec4b6; /* Teal accent */
+  margin-left: 4px;
+}
+
+/* MENU */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+/* LINKS */
+.nav-link {
+  position: relative;
+  font-size: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: #2ec4b6;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #2ec4b6;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.nav-link.active {
+  color: #2ec4b6;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
