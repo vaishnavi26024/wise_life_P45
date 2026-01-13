@@ -33,13 +33,8 @@ const About = () => {
     }
   };
 
-  const coreValues = [
-    { icon: Shield, title: 'Integrity & Trust', color: '#FF6B35' },
-    { icon: Lightbulb, title: 'Innovation', color: '#F7B801' },
-    { icon: Users, title: 'Customer Centricity', color: '#00B4D8' },
-    { icon: Award, title: 'Reliable Partnerships', color: '#9B59B6' },
-    { icon: Zap, title: 'Sustainability', color: '#26DE81' }
-  ];
+  
+  
 
   return (
     <div className="horizontal-container">
@@ -167,7 +162,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* PAGE 2 - Vision, Mission, Values & Legacy */}
+        {/* PAGE 2 - Vision, Mission, Legacy */}
         <div className="page page-2">
           <div className="page-content">
             {/* Top Section - Vision & Mission */}
@@ -205,20 +200,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Middle Section - Core Values */}
-            <div className="values-section">
-              <h2 className="section-title">Our Core Values</h2>
-              <div className="values-grid">
-                {coreValues.map((value, index) => (
-                  <div key={index} className="value-item" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <div className="value-icon" style={{ background: value.color }}>
-                      <value.icon size={24} />
-                    </div>
-                    <span className="value-title">{value.title}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            
 
             {/* Bottom Section - Legacy */}
             <div className="legacy-section">
