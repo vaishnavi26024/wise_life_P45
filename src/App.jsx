@@ -1,16 +1,27 @@
 import React from 'react';
-import Contact from './pages/Contact'; // Imported as a page
-import Footer from './components/common/Footer'; // Imported as a component
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Contact from './pages/Contact'; 
+import Footer from './components/common/Footer'; 
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-grow">
-        {/* If you have a Navbar, put it here */}
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <Routes>
+            {/* The Lead's Routes */}
+            <Route path="/" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            
+            {/* Your Route */}
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

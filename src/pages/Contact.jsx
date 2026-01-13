@@ -74,7 +74,8 @@ const Contact = () => {
 
             {/* NEW: Address Input Field */}
             <div className="flex flex-col gap-1">
-              <label className="text-[10px] font-black uppercase tracking-wider text-[#0B2C4D]">Address</label>
+              <label className="text-[10px] font-black uppercase tracking-wider
+               text-[#0B2C4D]">Address</label>
               <input 
                 type="text" 
                 placeholder="Address" 
