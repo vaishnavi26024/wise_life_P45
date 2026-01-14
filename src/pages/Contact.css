@@ -1,0 +1,235 @@
+/* --- Animation Core --- */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* --- Layout --- */
+.contact-section {
+  /* Changed background to a slightly lighter dark shade */
+  background-color: #1e293b; 
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-title {
+  color: #ffffff;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.teal-line {
+  width: 60px;
+  height: 4px;
+  background: #2dd4bf;
+  margin: 16px auto;
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.contact-header:hover .teal-line {
+  width: 100px;
+}
+
+.contact-description {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+/* --- Card Styling --- */
+.contact-card {
+  width: 100%;
+  max-width: 960px;
+  background: #ffffff;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+  padding: 50px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.form-header-centered {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.form-title-text {
+  color: #0f172a;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+}
+
+.form-side, .info-side {
+  padding: 0 50px;
+}
+
+@media (min-width: 1024px) {
+  .form-side { border-right: 1px solid #f1f5f9; }
+}
+
+/* --- Professional Input Animation --- */
+.input-group {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.input-field {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  outline: none;
+  font-size: 1rem;
+  padding: 8px 0;
+  background: transparent;
+  color: #0f172a;
+  font-weight: 500;
+  transition: border-color 0.3s ease;
+}
+
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #14b8a6;
+  transition: width 0.4s var(--ease-out-expo);
+}
+
+.input-field:focus ~ .input-highlight {
+  width: 100%;
+}
+
+.input-field:focus {
+  border-bottom-color: transparent;
+}
+
+.input-field:focus ~ .input-label {
+  color: #14b8a6;
+}
+
+/* --- Message & Map --- */
+.message-container {
+  margin-bottom: 24px;
+}
+
+.message-area-compact {
+  width: 100%;
+  height: 100px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 16px;
+  outline: none;
+  resize: none;
+  font-size: 0.95rem;
+  color: #334155;
+  transition: all 0.3s ease;
+}
+
+.message-area-compact:focus {
+  background: #ffffff;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+.map-container {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Updated Button Styling --- */
+.submit-btn-compact {
+  width: 100%;
+  background: #14b8a6; /* Teal Green Default */
+  color: white;
+  padding: 18px;
+  margin-top: 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn-compact:hover {
+  background: #0d9488; /* Darker Teal on Hover */
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -10px rgba(20, 184, 166, 0.4);
+}

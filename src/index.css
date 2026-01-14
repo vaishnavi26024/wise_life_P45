@@ -1,6 +1,4 @@
-@import "tailwindcss";
-@tailwind components;
-@tailwind utilities;
+
 /* ===== CSS RESET ===== */
 * {
   margin: 0;
