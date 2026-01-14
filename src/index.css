@@ -10,6 +10,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden; /* merged safely */
 }
 
 body {
@@ -19,7 +20,6 @@ body {
 
   background-color: #F8FAFC; /* Wise Life white */
   color: #102A43;            /* Deep blue text */
-  overflow-x: hidden;
 }
 
 /* ===== ROOT CONTAINER ===== */
@@ -39,7 +39,4 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
-}
-html {
-  overflow-x: hidden;
 }
