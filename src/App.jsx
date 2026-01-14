@@ -1,18 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/home";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
-import Navbar from "./components/common/Navbar";
 import About from "./pages/About";
 import Business from "./pages/Business";
 import Contact from "./pages/Contact";
-import "./App.css";
+
+import Navbar from "./components/common/Navbar";
+
+import "./styles.css";   // ✅ from first App.jsx
+import "./App.css";      // ✅ existing App styles
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main style={{ padding: "40px" }}>
+
+      {/* Main content */}
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
