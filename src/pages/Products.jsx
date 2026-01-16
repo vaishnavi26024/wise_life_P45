@@ -28,7 +28,7 @@ export default function Products() {
           <button onClick={() => setCategory("EV")}>EV</button>
         </div>
 
-        BACKGROUND VIDEO */
+         /* BACKGROUND VIDEO */ 
         { <video
           className="wl-bg-video"
           autoPlay

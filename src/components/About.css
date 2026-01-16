@@ -1,30 +1,18 @@
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', sans-serif;
-}
 
 
 .horizontal-container {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   margin: 0 !important;
   padding: 0 !important;
   top: 0;
+}
+
+.horizontal-container.scrolling-active {
+  overflow: hidden;
 }
 
 .pages-wrapper {
@@ -40,6 +28,7 @@ body {
   display: flex;
   align-items: stretch;   
   overflow-x: hidden;
+  background-color: #0E3A5A; /* New background color for About Us pages */
 }
 
 
@@ -120,26 +109,11 @@ body {
 
 /* ============= PAGE 1 (UPDATED) ============= */
 .page-1, .page-2 {
-  background: #ffffff;
   position: relative;
   overflow: hidden;
 }
 
-/* Page 1 background image layer with smooth movement */
-.page-1::before, .page-2::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
-    url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1800&auto=format&fit=crop&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: page1BgMove 18s ease-in-out infinite alternate;
-  z-index: 0;
-  transform: scale(1.05);
-}
+/* Page 1 background image layer with smooth movement - REMOVED FOR DARK THEME */
 
 /* Keep content above background */
 .page-1 .page-content, .page-2 .page-content {
@@ -160,7 +134,7 @@ body {
   max-width: 1400px;
   margin-inline: auto;
   margin-top: 0;
-  padding-top: 0; /* 🔥 removes gap */
+  padding-top: 120px; /* Adjusted to push content below navbar */
   padding-left: clamp(16px, 6vw, 80px);
   padding-right: clamp(16px, 6vw, 80px);
   padding-bottom: clamp(40px, 6vw, 80px);
@@ -210,23 +184,20 @@ body {
 .main-title {
   font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 900;
-  color: #102A43;
+  color: #ffffff; /* Changed to white for readability */
   line-height: 1;
   margin-bottom: 15px;
   animation: fadeIn 1s ease-out 0.4s backwards;
 }
 
 .highlight-text {
-  background: linear-gradient(135deg, #102A43 0%,#102A43 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff; /* Changed to white for readability on dark background */
 }
 
 .hero-subtitle {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: #2C5364;
+  color: #ffffff; /* Changed to white for readability */
   margin-bottom: 25px;
   animation: fadeIn 1s ease-out 0.5s backwards;
 }
@@ -241,7 +212,7 @@ body {
 .hero-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #555;
+  color: #ffffff; /* Changed to white for readability */
   margin-bottom: 35px;
   animation: fadeIn 1s ease-out 0.6s backwards;
 }
@@ -285,16 +256,13 @@ body {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #102A43, #26DE81);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff; /* Changed to white for readability */
   margin-bottom: 5px;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #666;
+  color: #ffffff; /* Changed to white for readability */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -310,11 +278,10 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px 18px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   font-size: 0.9rem;
-  color: #333;
+  color: #ffffff;  /*Changed to white for readability */
   font-weight: 600;
   transition: all 0.3s ease;
   animation: fadeIn 1s ease-out backwards;
@@ -467,9 +434,9 @@ body {
 .page-2 {
   height: auto;
   min-height: 100vh;
-  overflow-y: auto;
+  overflow-y: auto; /* Added to allow scrolling if content overflows */
   flex-direction: column;
-  background: #ffffff !important;
+  background: #0E3A5A !important;
 }
 
 .page-2 footer {
@@ -482,9 +449,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 40px;
-  padding-top: 90px;   /* navbar height */
-  padding-bottom: 80px;
+  gap: 0;
+  padding-top: 120px;
+  padding-bottom: 0px; /* Further reduced padding */
 }
 
 
@@ -492,19 +459,18 @@ body {
 /* Vision & Mission */
 .vm-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased minmax width for cards */
+  gap: 20px;
   width: 100%;
 }
 
-
 .vm-card {
   background: #ffffff;
-  padding: 40px;
+  padding: 30px; /* Increased padding */
   border-radius: 24px;
   color: #1a1a1a;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */ /* Removed */
   transition: all 0.5s ease;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
@@ -554,12 +520,13 @@ body {
   font-weight: 800;
   position: relative;
   z-index: 2;
+  color: #1a1a1a; /* Changed back to dark for readability on white background */
 }
 
 .vm-card p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #555;
+  color: #555; /* Changed back to dark for readability on white background */
   position: relative;
   z-index: 2;
 }
@@ -578,7 +545,9 @@ body {
   align-items: center;
   gap: 12px;
   font-size: 1.05rem;
-  color: #555;
+  color: #555; /* Changed back to dark for readability on white background */
+  position: relative;
+  z-index: 2;
 }
 
 .mission-list svg {
@@ -587,33 +556,11 @@ body {
 }
 
 /* Legacy Section */
-.legacy-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 50px;
-  align-items: center;
-  background: transparent !important;
-}
-
-.section-title {
-  font-size: 2.3rem;
-  font-weight: 900;
-  margin-bottom: 15px;
-  color: #1a1a1a;
-}
-
-.legacy-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 30px;
-}
 
 .legacy-highlights {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background: transparent !important;
+  gap: 20px; /* Increased gap for better alignment */
 }
 
 .highlight-item {
@@ -639,21 +586,22 @@ body {
 
 .highlight-item h4 {
   font-size: 1.2rem;
-  color: #1a1a1a;
+  color: #1a1a1a; /* Changed back to dark for readability on white background */
   margin-bottom: 5px;
   font-weight: 700;
 }
 
 .highlight-item p {
   font-size: 0.9rem;
-  color: #666;
+  color: #666; /* Changed back to dark for readability on white background */
+  line-height: 1.4;
 }
 
 .legacy-right {
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  max-height: 400px; /* Cap max height */
+  max-height: 300px; /* Increased max height */
   background: #fff;
 }
 
@@ -853,4 +801,117 @@ body {
     padding: 8px 15px;
     font-size: 0.8rem;
   }
+}
+
+.about-nav-buttons {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.about-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #26DE81, hsl(143, 97%, 50%));
+  color: #1a1a1a;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.about-nav-button:hover {
+
+  background: linear-gradient(135deg, #26DE81, hsl(143, 91%, 22%));
+
+  transform: translateY(-3px);
+
+}
+
+
+
+/* New Legacy Section Styles */
+.legacy-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 0 40px; /* Further reduced vertical padding */
+  background-color: #0E3A5A;
+}
+
+.legacy-left .section-title {
+  margin-bottom: 24px;
+  color: #ffffff; /* Changed to white for readability */
+  text-align: left;
+}
+
+.legacy-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #ffffff; /* Changed to white for readability */
+  margin-bottom: 48px;
+  text-align: left;
+}
+
+.legacy-card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.legacy-card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.legacy-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.legacy-card-icon {
+  flex-shrink: 0;
+  color: #26DE81;
+}
+
+.legacy-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #102A43; /* Changed back to dark for readability on white background */
+  margin-bottom: 4px;
+}
+
+.legacy-card-subtitle {
+  font-size: 0.9rem;
+  color: #718096; /* Changed back to dark for readability on white background */
+}
+
+.legacy-right {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.legacy-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

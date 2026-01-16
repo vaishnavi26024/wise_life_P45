@@ -24,7 +24,7 @@
 
 /* --- Layout --- */
 .contact-section {
-  background-color: #1e293b; /* Lighter Dark Shade */
+  background-color: #0E3A5A; /* New background color */
   padding: 80px 20px;
   min-height: 100vh;
   display: flex;
@@ -63,7 +63,7 @@
 }
 
 .contact-description {
-  color: #94a3b8;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 300;
 }
@@ -72,7 +72,7 @@
 .contact-card {
   width: 100%;
   max-width: 960px;
-  background: #ffffff;
+  background: #E4EAF1;
   border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
@@ -88,12 +88,11 @@
 }
 
 .form-title-text {
-  color: #0f172a;
+  color: #14b8a6;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  font-size: 0.85rem;
-  opacity: 0.6;
+  font-size: 1rem;
 }
 
 .grid-layout {
@@ -125,10 +124,10 @@
 
 .input-label {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #64748b;
+  color: #14b8a6;
   margin-bottom: 8px;
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
@@ -136,33 +135,21 @@
 
 .input-field {
   width: 100%;
-  border: none;
-  border-bottom: 2px solid #e2e8f0;
+  border: 2px solid #cbd5e1;
   outline: none;
   font-size: 1rem;
-  padding: 8px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
   background: transparent;
   color: #0f172a;
   font-weight: 500;
   transition: border-color 0.3s ease;
 }
 
-.input-highlight {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0;
-  background: #14b8a6;
-  transition: width 0.4s var(--ease-out-expo);
-}
 
-.input-field:focus ~ .input-highlight {
-  width: 100%;
-}
 
 .input-field:focus {
-  border-bottom-color: transparent;
+  border-color: #14b8a6;
 }
 
 .input-field:focus ~ .input-label {

@@ -40,7 +40,7 @@ export default function ProductDetails() {
             {/* BACK LINK AT BOTTOM */}
            <button
   className="pd-back-fixed"
-  onClick={() => navigate(-1)}
+  onClick={() => navigate('/products')}
 >
   ← Back to Products
 </button>

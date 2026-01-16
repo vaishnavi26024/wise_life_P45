@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Zap, Target, Award, Shield, ArrowRight, ChevronRight } from 'lucide-react';
+import { Zap, Target, Award, Shield, ArrowRight, ChevronRight, ArrowDown, ArrowLeft } from 'lucide-react'; // Added ArrowDown, ArrowLeft
 import '../components/About.css';
 
 const About = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // Added isMobile state
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []); // Added isMobile useEffect
 
   useEffect(() => {
     const handleWheel = (e) => {
@@ -21,50 +33,78 @@ const About = () => {
       }
     };
 
-    window.addEventListener("wheel", handleWheel, { passive: true });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentPage, isAnimating]);
+    if (!isMobile) { // Apply wheel event only if not mobile
+      window.addEventListener("wheel", handleWheel, { passive: true });
+    }
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [currentPage, isAnimating, isMobile]); // Added isMobile to dependencies
 
   const goToPage = (page) => {
-    if (!isAnimating && page !== currentPage) {
-      setIsAnimating(true);
-      setCurrentPage(page);
-      setTimeout(() => setIsAnimating(false), 1000);
+    if (!isMobile) { // Added isMobile check
+      if (!isAnimating && page !== currentPage) {
+        setIsAnimating(true);
+        setCurrentPage(page);
+        setTimeout(() => setIsAnimating(false), 1000);
+      }
     }
+  };
+
+  const handleExploreClick = () => { // Added handleExploreClick
+    goToPage(1);
+  };
+
+  const handleGoBack = () => { // Added handleGoBack
+    goToPage(0);
+    // if (onUnlockScroll) { // Removed onUnlockScroll as it's not passed here
+    //   onUnlockScroll();
+    // }
   };
 
   return (
     <div className="horizontal-container">
       {/* Page Indicator */}
-      <div className="page-indicator">
-        <div
-          className={`indicator-dot ${currentPage === 0 ? "active" : ""}`}
-          onClick={() => goToPage(0)}
-        />
-        <div
-          className={`indicator-dot ${currentPage === 1 ? "active" : ""}`}
-          onClick={() => goToPage(1)}
-        />
-      </div>
+      {!isMobile && ( // Conditional rendering for mobile
+        <div className="page-indicator">
+          <div
+            className={`indicator-dot ${currentPage === 0 ? "active" : ""}`}
+            onClick={() => goToPage(0)}
+          />
+          <div
+            className={`indicator-dot ${currentPage === 1 ? "active" : ""}`}
+            onClick={() => goToPage(1)}
+          />
+        </div>
+      )}
 
       {/* Scroll Hint */}
-      {currentPage === 0 && (
-        <div className="scroll-hint" onClick={() => goToPage(1)}>
+      {currentPage === 0 && !isMobile && ( // Conditional rendering for mobile
+        <div className="scroll-hint" onClick={handleExploreClick}>
           <span>Scroll to explore</span>
           <ChevronRight size={24} />
+        </div>
+      )}
+      
+      {/* On Page 2, show navigation buttons */}
+      {currentPage === 1 && !isMobile && ( // Conditional rendering for mobile
+        <div className="about-nav-buttons">
+          <button onClick={handleGoBack} className="about-nav-button">
+            Go Back
+          </button>
         </div>
       )}
 
       {/* Pages Wrapper */}
       <div
         className="pages-wrapper"
-        style={{ transform: `translateX(-${currentPage * 100}vw)` }}
+        style={!isMobile ? { transform: `translateX(-${currentPage * 100}vw)` } : {}} // Conditional style for mobile
       >
         {/* PAGE 1 */}
 <div className="page page-1">
   <div className="page-content">
     <div className="hero-content-left">
-      <div className="logo-badge">WISE LIFE</div>
+      {/* <div className="logo-badge">WISE LIFE</div> */}
 
       <h1 className="main-title">
         About <span className="highlight-text">Us</span>

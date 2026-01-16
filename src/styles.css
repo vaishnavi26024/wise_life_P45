@@ -8,7 +8,6 @@
 }
 
 /* RESET */
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,21 +18,20 @@
 html,
 body {
   height: 100%;
-  background: var(--blue-1);
 }
 
 /* BODY STYLES */
 body {
   font-family: Inter, sans-serif;
-  color: var(--white);
   overflow-x: hidden;
+  background-color: #0E3A5A; /* New global background color */
+  color: #f0f0f0;
 }
 
 
 /* PAGE */
 .page {
   min-height: 100svh;
-  background: var(--blue-1);
 }
 
 /* ---------------- HERO ---------------- */
@@ -145,36 +143,47 @@ body {
   padding: 28px 32px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
+  color: #ffffff; /* Default text color for the card */
 }
 
 .stat-card h3 {
   font-size: 2.6rem;
-  color: var(--teal-2);
+  color: #ffffff; /* Explicitly set to white */
+}
+
+.stat-card p {
+  color: rgba(255, 255, 255, 0.8); /* Slightly less bright white */
 }
 
 /* ---------------- PRODUCTS ---------------- */
 .products {
-  background: var(--blue-1);
-  padding: 100px 0;
+  background-color: #0E3A5A;
+  position: relative;
+  min-height: 105svh; /* Slightly increased height */
 }
 
 .products-heading {
-  text-align: center;
-  margin-bottom: 40px;
+  position: absolute;
+  top: 40px; /* Add some top padding */
+  left: 40px; /* Add some left padding */
+  z-index: 10;
+  text-align: left; /* Align text to the left */
+  color: #ffffff; /* Ensure text is visible over dark background */
 }
 
 .products-heading h2 {
   font-size: clamp(2rem, 5vw, 3rem);
+  color: #ffffff; /* Explicitly set to white */
 }
 
 .products-heading p {
-  color: var(--teal-2);
+  color: #ffffff; /* Explicitly set to white */
 }
 
 /* CAROUSEL */
 .products-carousel {
   position: relative;
-  height: 70vh;
+  height: 90vh; /* Increased height for larger images/videos */
   overflow: hidden;
 }
 
@@ -204,6 +213,8 @@ body {
   bottom: 60px;
   left: 60px;
   font-size: 3rem;
+  color: #E0E0E0;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------------- ANIMATIONS ---------------- */

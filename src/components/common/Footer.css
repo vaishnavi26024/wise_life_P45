@@ -1,10 +1,10 @@
 /* Footer Container */
 .footer-container {
-  background-color: #F8FAFC;
+  background-color: #0E3A5A; /* Same as Contact page */
   width: 100%;
   padding-bottom: 40px;
   font-family: 'Inter', sans-serif;
-  color: #0A2540;
+  color: #ffffff; /* Changed to white for readability */
   overflow: hidden;
 }
 
@@ -39,7 +39,7 @@
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 0.2em;
-  color: #0A2540;
+  color: #ffffff; /* Changed to white for readability */
   margin-bottom: 16px;
   transition: all 0.3s ease;
 }
@@ -58,7 +58,7 @@
 .footer-link {
   font-size: 14px;
   font-weight: 600;
-  color: inherit;
+  color: #ffffff; /* Explicitly set to white for visibility */
   text-decoration: none;
   width: fit-content;
   transition: color 0.3s ease;
@@ -71,7 +71,7 @@
 .footer-text {
   font-size: 14px;
   line-height: 1.6;
-  color: #4b5563;
+  color: #ffffff; /* Changed to white for readability */
   font-weight: 500;
 }
 
@@ -116,7 +116,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
-  color: #94a3b8;
+  color: #ffffff; /* Changed to white for readability */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -135,7 +135,7 @@
 }
 
 .footer-legal-link {
-  color: #94a3b8;
+  color: #ffffff; /* Changed to white for readability */
   text-decoration: none;
   font-size: 10px;
   position: relative;
@@ -160,6 +160,17 @@
 
 .footer-legal-link:hover::after {
   width: 100%;
+}
+
+/* Specific styling for the "WORD LANE TECH" link in footer-bottom */
+.footer-bottom p a {
+  color: #ffffff; /* Default color: white */
+  text-decoration: underline; /* Add underline for better indication of a link */
+  transition: color 0.3s ease;
+}
+
+.footer-bottom p a:hover {
+  color: #2EC4B6; /* Hover color: accent blue */
 }
 
 /* Intersection Observer Animations */

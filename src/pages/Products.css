@@ -10,20 +10,10 @@
   --accent-soft: #34D399;
 }
 
-/* ===================== */
-/* GLOBAL FULL BLEED FIX */
-/* ===================== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
-
 /* PAGE WRAPPER (NEUTRAL, NOT A CONTAINER) */
 .wl-wrapper {
   min-height: 100vh;
-  background: var(--white-bg);
+  background: #3E6482; /* New background color */
 }
 
 /* ===================== */
@@ -31,12 +21,12 @@ html, body {
 /* ===================== */
 .wl-products {
   width: 100%;
-  background: var(--white-bg);
+  background: var(--white-bg); /* Reverted to original background */
 }
 
 .wl-products h1 {
   font-size: 2.4rem;
-  color: var(--blue-dark);
+  color: white; /* Changed to white */
   margin-bottom: 18px;
   text-align: center;
   position: relative;
@@ -142,16 +132,16 @@ html, body {
   margin: 0 8px;
   padding: 8px 16px;
   border-radius: 8px;
-  background: var(--white);
-  color: var(--blue-dark);
+  background: linear-gradient(135deg, #26DE81, hsl(143, 97%, 50%)); /* Matching Scroll to Explore button */
+  color: var(--white); /* Changed for readability */
   font-weight: 600;
-  border: 1px solid var(--accent);
+  border: 1px solid transparent; /* Changed border to transparent for gradient */
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .wl-product-filters button:hover {
-  background: var(--accent);
+  background: linear-gradient(135deg, #26DE81, hsl(143, 91%, 22%)); /* Matching Scroll to Explore button hover */
   color: var(--white);
 }
 
@@ -358,7 +348,7 @@ html, body {
 
 .wl-products {
   position: relative;
-  overflow: hidden;
+  /* Removed overflow: hidden; */
 }
 
 /* Video layer */
@@ -380,7 +370,7 @@ html, body {
   position: absolute;
   inset: 0;
 
-background: rgba(248, 250, 252, 0.55);
+background: rgba(62, 100, 130, 0.55);
   z-index: 0;
 }
 

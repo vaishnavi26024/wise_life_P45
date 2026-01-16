@@ -44,7 +44,7 @@ const Footer = () => {
           <nav className="footer-nav">
             <a href="/" className="footer-link">Home</a>
             <a href="/about" className="footer-link">About Us</a>
-            <a href="/services" className="footer-link">Services</a>
+            <a href="/products" className="footer-link">Services</a>
             <a href="/contact" className="footer-link">Contact</a>
           </nav>
         </div>
@@ -71,7 +71,9 @@ const Footer = () => {
         
         {/* Corrected Order */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start' }}>
-           <p style={{ opacity: 0.7 }}>POWERED BY WORD LANE TECH</p>
+           <p>
+            POWERED BY <a href="https://wordlanetech.com" target="_blank" rel="noopener noreferrer">WORD LANE TECH</a>
+           </p>
            <p>© 2026 WISE LIFE. ALL RIGHTS RESERVED.</p>
         </div>
 

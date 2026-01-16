@@ -20,7 +20,7 @@
 
 /* Navbar container */
 .navbar {
-  height: 72px;
+  height: 82px;
   padding: 0 48px;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@
 }
 
 .navbar-logo img {
-  height: 40px;
+  height: 60px;
 }
 
 .logo-wise {
@@ -97,4 +97,11 @@
 
 .nav-link.active::after {
   width: 100%;
+}
+
+/* Nav Item Content for icons */
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust as needed for spacing between icon and text */
 }

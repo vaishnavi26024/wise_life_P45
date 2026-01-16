@@ -122,7 +122,7 @@ function Business() {
                                 <motion.div
                                     key={item.id}
                                     variants={itemVariants}
-                                    whileHover={{ scale: 1.02, backgroundColor: "#ffffff", boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                                    whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                                     className="activity-card"
                                 >
                                     <motion.div

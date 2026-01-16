@@ -1,0 +1,29 @@
+.landing-wrapper {
+  /* Remove scroll-snap for natural scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.landing-wrapper.no-scroll {
+  overflow-y: hidden;
+}
+.landing-wrapper > section {
+  width: 100vw;
+  position: relative;
+}
+
+/* Home and About sections should be full height */
+#home {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#about {
+  height: 100vh;
+  overflow: visible;
+}
+
+#home-products {
+  min-height: 100vh;
+  overflow: visible;
+}

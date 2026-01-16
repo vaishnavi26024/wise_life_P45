@@ -1,59 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Zap, Target, Award, Shield, ArrowRight, ChevronRight } from 'lucide-react';
+import { Zap, Target, Award, Shield, ArrowRight, ChevronRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import "../components/About.css";
 
-
-const About = () => {
+const About = ({ onHorizontalScrollStart, onUnlockScroll, isAboutSectionActive }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); // New state to track mobile status
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Function to update isMobile state
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
-    // Initial check
     checkIsMobile();
-
-    // Event listener for window resize
     window.addEventListener('resize', checkIsMobile);
-
     return () => {
       window.removeEventListener('resize', checkIsMobile);
     };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
-
-  useEffect(() => {
-    const handleWheel = (e) => {
-      // Only enable horizontal scrolling on larger screens
-      if (!isMobile) {
-        if (isAnimating) return;
-
-        if (e.deltaY > 0 && currentPage < 1) {
-          setIsAnimating(true);
-          setCurrentPage(1);
-          setTimeout(() => setIsAnimating(false), 1000);
-        } else if (e.deltaY < 0 && currentPage > 0) {
-          setIsAnimating(true);
-          setCurrentPage(0);
-          setTimeout(() => setIsAnimating(false), 1000);
-        }
-      }
-    };
-
-    if (!isMobile) {
-      window.addEventListener('wheel', handleWheel, { passive: true });
-    }
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, [currentPage, isAnimating, isMobile]); // Added isMobile to dependencies
+  }, []);
 
   const goToPage = (page) => {
-    // Only allow manual page change on larger screens
     if (!isMobile) {
       if (!isAnimating && page !== currentPage) {
         setIsAnimating(true);
@@ -63,40 +28,63 @@ const About = () => {
     }
   };
 
+  const handleExploreClick = () => {
+    goToPage(1);
+  };
+
+  const handleGoBack = () => {
+    goToPage(0);
+    if (onUnlockScroll) {
+      onUnlockScroll();
+    }
+  };
+
   return (
-    <div className="horizontal-container">
-      {/* Page Indicator */}
-      {!isMobile && ( // Conditionally render page indicator
-        <div className="page-indicator">
-          <div
-            className={`indicator-dot ${currentPage === 0 ? 'active' : ''}`}
-            onClick={() => goToPage(0)}
-          ></div>
-          <div
-            className={`indicator-dot ${currentPage === 1 ? 'active' : ''}`}
-            onClick={() => goToPage(1)}
-          ></div>
-        </div>
+    <div className={`horizontal-container ${currentPage !== 0 ? 'scrolling-active' : ''}`}>
+      {/* -- CONTROLS -- */}
+      {isAboutSectionActive && (
+        <>
+          {!isMobile && (
+            <div className="page-indicator">
+              <div
+                className={`indicator-dot ${currentPage === 0 ? 'active' : ''}`}
+                onClick={() => goToPage(0)}
+              ></div>
+              <div
+                className={`indicator-dot ${currentPage === 1 ? 'active' : ''}`}
+                onClick={() => goToPage(1)}
+              ></div>
+            </div>
+          )}
+
+          {/* On Page 1, show "Scroll to Explore" button */}
+          {currentPage === 0 && !isMobile && (
+            <div className="scroll-hint" onClick={handleExploreClick} aria-label="Scroll to explore" role="button">
+              <span>Scroll to explore</span>
+              <ChevronRight size={24} />
+            </div>
+          )}
+
+          {/* On Page 2, show navigation buttons */}
+          {currentPage === 1 && !isMobile && (
+            <div className="about-nav-buttons">
+              <button onClick={handleGoBack} className="about-nav-button" aria-label="Go Back">
+                Go Back
+              </button>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Scroll Hint */}
-      {currentPage === 0 && !isMobile && ( // Conditionally render scroll hint
-        <div className="scroll-hint" onClick={() => goToPage(1)}>
-          <span>Scroll to explore</span>
-          <ChevronRight size={24} />
-        </div>
-      )}
 
-      {/* Pages Wrapper */}
       <div
         className="pages-wrapper"
         style={!isMobile ? { transform: `translateX(-${currentPage * 100}vw)` } : {}}
       >
-        {/* PAGE 1 */}
         <div className="page page-1">
           <div className="page-content">
             <div className="hero-content-left">
-              <div className="logo-badge">WISE LIFE</div>
+              {/* <div className="logo-badge"></div> */}
               <h1 className="main-title">
                 About <span className="highlight-text">Us</span>
               </h1>
@@ -167,7 +155,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* PAGE 2 */}
         <div className="page page-2">
           <div className="page-content">
             <div className="vm-section">
@@ -176,9 +163,9 @@ const About = () => {
                   <Target size={40} />
                 </div>
                 <h3>Our Vision</h3>
-                <p>
-                  To become India's leading distribution partner in clean energy
-                  solutions.
+                <p>To become a leading, trusted
+                   distribution partner in clean energy and sustainable living products across
+                  India
                 </p>
               </div>
 
@@ -201,6 +188,22 @@ const About = () => {
                 <p className="legacy-text">
                   Backed by 2000+ installations across India.
                 </p>
+                <div className="legacy-card-container">
+                  <div className="legacy-card">
+                    <Award size={36} className="legacy-card-icon" />
+                    <div>
+                      <h3 className="legacy-card-title">2000+ Systems Installed</h3>
+                      <p className="legacy-card-subtitle">Across all sectors</p>
+                    </div>
+                  </div>
+                  <div className="legacy-card">
+                    <Shield size={36} className="legacy-card-icon" />
+                    <div>
+                      <h3 className="legacy-card-title">Trusted Reputation</h3>
+                      <p className="legacy-card-subtitle">Quality & transparency</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="legacy-right">
                 <img
@@ -211,12 +214,8 @@ const About = () => {
             </div>
 
             <div className="cta-container">
-              {/* <button className="cta-button">
-            
-              </button> */}
             </div>
           </div>
-      
         </div>
       </div>
     </div>
