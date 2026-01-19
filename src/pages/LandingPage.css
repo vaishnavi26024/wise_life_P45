@@ -8,11 +8,10 @@
   overflow-y: hidden;
 }
 .landing-wrapper > section {
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
-/* Home and About sections should be full height */
 #home {
   height: 100vh;
   overflow: hidden;

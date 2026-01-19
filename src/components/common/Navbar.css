@@ -26,9 +26,20 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: #0b2c4d; /* Deep Blue */
+  background-color: #0b2c4d; 
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
+/* ---------- MOBILE & SMALL LAPTOP FIX ---------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
 
 /* LOGO */
 .navbar-logo {
