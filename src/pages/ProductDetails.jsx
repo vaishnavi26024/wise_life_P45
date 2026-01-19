@@ -16,7 +16,7 @@ export default function ProductDetails() {
   return (
     <div className="wl-wrapper">
       {/* SAME HEADER */}
-      <header className="wl-header">
+      <header className="wl-header">     
         <div className="wl-header-inner">
           <div className="wl-brand">
             <img src={wiseLifeLogo} alt="Wise Life Logo" />
