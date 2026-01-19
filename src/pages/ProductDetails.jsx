@@ -14,6 +14,27 @@ export default function ProductDetails() {
 
   return (
     <div className="wl-wrapper">
+      {/* SAME HEADER */}
+      <header className="wl-header">     
+        <div className="wl-header-inner">
+          <div className="wl-brand">
+            <img src={wiseLifeLogo} alt="Wise Life Logo" />
+            <div className="wl-brand-text">
+              <span className="company-name">WISE LIFE</span>
+              <span className="company-moto">
+                Powering Clean Energy & Sustainable Mobility
+              </span>
+            </div>
+          </div>
+
+          <div className="wl-header-contact">
+            <a href="mailto:info@wiselifee.com">info@wiselifee.com</a>
+            <span className="divider">|</span>
+            <a href="tel:+917796711722">+91 77967 11722</a>
+          </div>
+        </div>
+      </header>
+
       {/* PRODUCT DETAILS */}
       <section className="wl-products">
         <div className="wl-products-inner pd-clean">
