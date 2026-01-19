@@ -20,9 +20,10 @@ html, body {
   overflow-x: hidden;
 }
 
+/* PAGE WRAPPER (NEUTRAL, NOT A CONTAINER) */
 .wl-wrapper {
   min-height: 100vh;
-  background: var(--white-bg);
+  background: #3E6482; 
 }
 
 /* ===================== */
@@ -156,8 +157,16 @@ html, body {
 }
 
 .wl-controls h1 {
+/* PRODUCTS (FULL WIDTH) */
+/* ===================== */
+.wl-products {
+  width: 100%;
+  background: var(--white-bg); 
+}
+
+.wl-products h1 {
   font-size: 2.4rem;
-  color: var(--blue-dark);
+  color: white; 
   margin-bottom: 18px;
 }
 
@@ -200,6 +209,10 @@ html, body {
 /* ===================== */
 /* PRODUCTS GRID */
 /* ===================== */
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
 
 .wl-products-inner {
   max-width: 1200px;
@@ -233,6 +246,9 @@ html, body {
   width: 100%;
   height: 180px;
   border-radius: 14px;
+  width: 100%;          
+  height: 180px;
+  border-radius: 12px;  
   overflow: hidden;
 }
 
@@ -240,6 +256,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-fit: cover;   
   display: block;
 }
 
@@ -248,6 +265,63 @@ html, body {
   font-size: 1.2rem;
   margin: 8px 0;
   color: var(--blue-dark);
+}
+
+.wl-product-info p {
+  font-size: 0.95rem;
+  color: #475569;
+  max-width: 520px;
+}
+
+/* ACTION */
+.wl-product-action {
+  margin-top: auto; 
+  text-align: center;
+}
+
+.wl-product-action .price {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--blue-mid);
+  margin-bottom: 10px;
+}
+
+.wl-product-action button {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: var(--blue-dark);
+  font-weight: 600;
+}
+
+.wl-product-action button:hover {
+  background: var(--accent-soft);
+}
+
+/* PRODUCT FILTERS */
+.wl-product-filters {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.wl-product-filters button {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #26DE81, hsl(143, 97%, 50%)); /* Matching Scroll to Explore button */
+  color: var(--white); 
+  font-weight: 600;
+  border: 1px solid transparent; /* Changed border to transparent for gradient */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wl-product-filters button:hover {
+  background: linear-gradient(135deg, #26DE81, hsl(143, 91%, 22%)); /* Matching Scroll to Explore button hover */
+  color: var(--white);
 }
 
 /* BADGE */
@@ -292,6 +366,93 @@ html, body {
   cursor: pointer;
 }
 
+  height: 360px;
+  object-fit: contain;
+  border-radius: 16px;   /* ✅ rounded edges */
+}
+
+/* INFO */
+.pd-info-clean h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--blue-dark);
+  text-align: left;
+}
+
+
+.pd-price-clean {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 10px 0 20px;
+}
+
+.pd-desc-clean {
+  color: #475569;
+  line-height: 1.8;
+  max-width: 700px;
+  margin-bottom: 28px;
+}
+
+/* ORDER BUTTON */
+.pd-order-clean {
+  padding: 12px 32px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: var(--blue-dark);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* BACK LINK */
+.pd-back-link {
+  display: block;
+  background: none;
+  color: var(--blue-dark);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .pd-image-large {
+    height: 260px;
+  }
+
+  .pd-info-clean h1 {
+    font-size: 1.4rem;
+  }
+}
+
+/* ===================== */
+/* FIXED BACK BUTTON */
+/* ===================== */
+
+.pd-back-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: var(--accent-soft);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(10, 37, 64, 0.15);
+
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.pd-back-fixed:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 12px 28px rgba(10, 37, 64, 0.25);
+  background: var(--accent);
+}
 /* ===================== */
 /* RESPONSIVE */
 /* ===================== */
@@ -300,6 +461,9 @@ html, body {
   .wl-products-inner {
     grid-template-columns: repeat(2, 1fr);
   }
+.wl-products {
+  position: relative;
+  /* Removed overflow: hidden; */
 }
 
 @media (max-width: 600px) {
@@ -316,7 +480,7 @@ html, body {
     background: rgba(248, 250, 252, 0.65);
   }
 
-  .wl-filters {
+  .wl-filters {https://github.com/vaishnavi26024/wise_life_P45/pull/11/conflict?name=src%252Fpages%252FProducts.css&ancestor_oid=9854203bd1e8fa34e0ec866e84cfc84430874098&base_oid=d5382684a91c32c8da9dd24b57e0b7bb3b74c831&head_oid=1dfa1ae63c7e36d90035ee985f30109948240c45
     justify-content: flex-start;
     overflow-x: auto;
   }
@@ -328,4 +492,13 @@ html, body {
   .wl-search input {
     width: 100%;
   }
+}
+background: rgba(62, 100, 130, 0.55);
+  z-index: 0;
+}
+
+/* Ensure products appear above video */
+.wl-products-inner {
+  position: relative;
+  z-index: 1;
 }

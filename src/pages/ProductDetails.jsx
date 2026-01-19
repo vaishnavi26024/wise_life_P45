@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data";
-import wiseLifeLogo from "../assets/logo/wiselife-logo.png";
 import "./Products.css";
 
 export default function ProductDetails() {
@@ -62,7 +61,7 @@ export default function ProductDetails() {
             {/* BACK LINK AT BOTTOM */}
            <button
   className="pd-back-fixed"
-  onClick={() => navigate(-1)}
+  onClick={() => navigate('/products')}
 >
   ← Back to Products
 </button>

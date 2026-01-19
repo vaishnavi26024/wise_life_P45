@@ -1,0 +1,7 @@
+This is a placeholder file. Please add the images to this directory.
+- solar-energy.jpg
+- ev-charging.jpg
+- energy-storage.jpg
+- legacy.jpg
+- page-1-bg.jpg
+- page-2-bg.jpg
