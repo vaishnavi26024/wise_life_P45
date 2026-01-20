@@ -56,7 +56,7 @@ export default function ProductDetails() {
 
             <div className="pd-actions">
               <button className="pd-btn-primary">Order Now</button>
-              <button className="pd-btn-secondary" onClick={() => navigate(-1)}>
+              <button className="pd-btn-secondary" onClick={() => navigate('/products', { state: { scroll: false } })}>
                 Go Back
               </button>
             </div>

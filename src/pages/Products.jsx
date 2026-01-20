@@ -19,7 +19,7 @@ export default function Products() {
     <div className="wl-wrapper">
       {/* PRODUCTS GRID WITH BACKGROUND VIDEO */}
       <section className="wl-products">
-        <h1>Our Products</h1>
+        <h1 style={{color: " #FFFFFF ", textAlign: "center"}}>Our Products</h1>
 
         {/* CATEGORY FILTERS */}
         <div className="wl-product-filters">
