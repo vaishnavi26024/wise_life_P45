@@ -1047,7 +1047,7 @@
 
   .legacy-right img {
     width: 100%;
-    height: 350px;        /* Proper visible height */
+    height: 250px;        /* Adjusted for better proportion */
     object-fit: cover;   /* Fill nicely */
     border-radius: 20px;
   }
