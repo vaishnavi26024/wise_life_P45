@@ -65,9 +65,9 @@ const Navbar = () => {
 
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <li>
-            <NavLink to="/#home" onClick={handleHomeClick} className="nav-link">
+            <NavLink to="/#home" onClick={handleHomeClick} className="nav-link" title="Home">
               <span className="nav-item-content">
-                Home
+                <Home size={22} />
               </span>
             </NavLink>
           </li>
@@ -81,9 +81,9 @@ const Navbar = () => {
             <NavLink to="/business" className="nav-link" onClick={() => setIsOpen(false)}>Business</NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="nav-link" onClick={() => setIsOpen(false)}>
+            <NavLink to="/contact" className="nav-link" onClick={() => setIsOpen(false)} title="Contact">
               <span className="nav-item-content">
-                Contact
+                <Phone size={22} />
               </span>
             </NavLink>
           </li>

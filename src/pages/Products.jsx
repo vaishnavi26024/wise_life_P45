@@ -43,6 +43,7 @@ export default function Products() {
         <div className="wl-products-inner">
           {filteredProducts.map((item) => (
             <div className="wl-product-row" key={item.id}>
+             
               {/* IMAGE */}
               <div className="wl-product-image">
                 <img src={item.image} alt={item.name} />

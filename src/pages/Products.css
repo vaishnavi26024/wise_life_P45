@@ -235,7 +235,9 @@ body {
   font-size: 1.2rem;
   margin: 8px 0;
   color: var(--blue-dark);
+  text-align: center;   /* ✅ ADD */
 }
+
 
 .wl-product-info p {
   font-size: 0.95rem;
@@ -306,6 +308,10 @@ body {
   color: #fff;
   margin-bottom: 6px;
 }
+.wl-product-info {
+  text-align: center;   /* ✅ centers badge + name */
+}
+
 
 .wl-badge.solar {
   background: var(--accent);

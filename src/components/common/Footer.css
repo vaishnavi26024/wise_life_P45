@@ -190,3 +190,35 @@
   opacity: 1 !important;
   transform: translate(0) !important;
 }
+
+/* ================================ */
+/* ONE ROW FOOTER (ALL DEVICES)     */
+/* ================================ */
+.footer-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Desktop spacing */
+@media (min-width: 768px) {
+  .footer-row > div {
+    flex: 1;
+  }
+
+  .footer-row > div:first-child {
+    flex: 1.5; /* Wise Life gets more space */
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .footer-row {
+    flex-direction: column;
+    gap: 32px;
+  }
+}

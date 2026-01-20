@@ -839,6 +839,17 @@
   .legacy-section {
     grid-template-columns: 1fr;
   }
+    .legacy-right {
+    width: 100%;
+    height: 280px;       /* makes image clearly visible */
+    max-height: none;
+  }
+
+  .legacy-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 480px) {
@@ -913,6 +924,9 @@
     padding: 8px 15px;
     font-size: 0.8rem;
   }
+   .legacy-right {
+    height: 240px;   /* still big, but fits small screens */
+  }
 }
 
 .about-nav-buttons {
@@ -962,12 +976,18 @@
   /* Further reduced vertical padding */
   background-color: #0E3A5A;
 }
-
+/* Center title and text properly */
+.legacy-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontal center */
+  text-align: center;       /* text center */
+  width: 100%;
+}
 .legacy-left .section-title {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   color: #ffffff;
-  /* Changed to white for readability */
-  text-align: left;
+  text-align: center;
 }
 
 .legacy-description {
@@ -976,9 +996,15 @@
   color: #ffffff;
   /* Changed to white for readability */
   margin-bottom: 48px;
-  text-align: left;
+  text-align: center;
 }
-
+.legacy-text {
+  color: #ffffff;          /* white text */
+  font-size: 1rem;
+  margin-bottom: 30px;
+  max-width: 500px;        /* prevents overlap */
+  text-align: center;
+}
 .legacy-card-container {
   display: grid;
   grid-template-columns: 1fr;
