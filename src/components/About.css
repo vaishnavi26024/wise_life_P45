@@ -839,6 +839,10 @@
   .legacy-section {
     grid-template-columns: 1fr;
   }
+
+  .legacy-section {
+    padding: 0 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1047,8 +1051,9 @@
 
   .legacy-right img {
     width: 100%;
-    height: 250px;        /* Adjusted for better proportion */
-    object-fit: cover;   /* Fill nicely */
+    height: auto;
+    object-fit: contain;
     border-radius: 20px;
+    min-height: 300px;
   }
 }
