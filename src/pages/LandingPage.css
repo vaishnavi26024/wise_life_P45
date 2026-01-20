@@ -7,7 +7,8 @@
 .landing-wrapper.no-scroll {
   overflow-y: hidden;
 }
-.landing-wrapper > section {
+
+.landing-wrapper>section {
   width: 100%;
   position: relative;
 }
@@ -17,12 +18,53 @@
   overflow: hidden;
 }
 
-#about {
-  height: 100vh;
-  overflow: visible;
+/* WRAPPER to allow scrolling "through" the section */
+.about-scroll-wrapper {
+  position: relative;
+  height: 250vh;
+  /* Scroll distance to drive the animation */
+  width: 100%;
 }
 
-#home-products {
-  min-height: 100vh;
-  overflow: visible;
+/* STICKY CONTAINER */
+.about-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Hide the sliding parts */
+}
+
+#about {
+  height: 100%;
+  width: 100%;
+}
+
+
+/* RESPONSIVE LANDING */
+@media (max-width: 768px) {
+  #home {
+    height: auto;
+    /* Allow content to dictate height on mobile */
+    min-height: 100vh;
+  }
+
+  .landing-wrapper>section {
+    overflow-x: hidden;
+  }
+
+  /* Disable sticky scroll effect for About on mobile if it's too complex */
+  /* For now, we keep it but ensure it doesn't break layout */
+  .about-sticky-container {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .about-scroll-wrapper {
+    height: auto;
+    /* Remove the extra scroll space */
+  }
 }

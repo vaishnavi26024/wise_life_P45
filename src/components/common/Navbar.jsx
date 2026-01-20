@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Home, Phone } from "lucide-react";
-import { useEffect } from "react"; // Import useEffect
+import { Home, Phone, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react"; // Import useEffect
 import "./Navbar.css";
 import wiseLifeLogo from "../../assets/logo/wiselife-logo.png";
 
@@ -8,14 +8,24 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   // Function to handle scrolling to a section on the same page
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsOpen(false);
   };
-
   // Effect to scroll to section when hash changes (for in-page navigation)
   useEffect(() => {
     if (location.hash) {
@@ -34,12 +44,13 @@ const Navbar = () => {
       // If not on homepage, navigate to homepage and let useEffect handle scroll
       navigate('/#home');
     }
+    setIsOpen(false);
   };
 
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        <div className="navbar-logo" onClick={handleHomeClick}> {/* Use simplified handleHomeClick */}
+        <div className="navbar-logo" onClick={handleHomeClick}>
           <img src={wiseLifeLogo} alt="Wise Life Logo" />
           <div>
             <span className="logo-wise">WISE</span>
@@ -47,27 +58,32 @@ const Navbar = () => {
           </div>
         </div>
 
-        <ul className="nav-links">
+        {/* Mobile Toggle Button */}
+        <div className="menu-toggle" onClick={toggleMenu}>
+          {isOpen ? <X size={28} color="#fff" /> : <Menu size={28} color="#fff" />}
+        </div>
+
+        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <li>
             <NavLink to="/#home" onClick={handleHomeClick} className="nav-link">
               <span className="nav-item-content">
-                <Home size={18} />
+                Home
               </span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="nav-link">About</NavLink> {/* Direct path */}
+            <NavLink to="/about" className="nav-link" onClick={() => setIsOpen(false)}>About</NavLink>
           </li>
           <li>
-            <NavLink to="/products" className="nav-link">Products</NavLink> {/* Direct path */}
+            <NavLink to="/products" className="nav-link" onClick={() => setIsOpen(false)}>Products</NavLink>
           </li>
           <li>
-            <NavLink to="/business" className="nav-link">Business</NavLink> {/* Direct path */}
+            <NavLink to="/business" className="nav-link" onClick={() => setIsOpen(false)}>Business</NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="nav-link">
+            <NavLink to="/contact" className="nav-link" onClick={() => setIsOpen(false)}>
               <span className="nav-item-content">
-                <Phone size={18} />
+                Contact
               </span>
             </NavLink>
           </li>

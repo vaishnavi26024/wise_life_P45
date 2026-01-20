@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
@@ -16,6 +17,7 @@ import "./styles.css";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <Navbar />
         <main style={{ flex: 1 }}>

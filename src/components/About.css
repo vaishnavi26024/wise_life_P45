@@ -1,6 +1,3 @@
-
-
-
 .horizontal-container {
   width: 100vw;
   height: 100vh;
@@ -21,20 +18,22 @@
   height: 100vh;
   transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
+
 .page {
   width: 100vw;
   height: 100vh;
   /* flex-shrink: 0; */
   display: flex;
-  align-items: stretch;   
+  align-items: stretch;
   overflow-x: hidden;
-  background-color: #0E3A5A; /* New background color for About Us pages */
+  background-color: #0E3A5A;
+  /* New background color for About Us pages */
 }
 
 
 /* Page Indicator */
 .page-indicator {
-  position: fixed;
+  position: absolute;
   right: 40px;
   top: 50%;
   transform: translateY(-50%);
@@ -67,14 +66,14 @@
 
 /* Scroll Hint */
 .scroll-hint {
-  position: fixed;
+  position: absolute;
   bottom: 40px;
   right: 40px;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
- background: linear-gradient(135deg, #26DE81, hsl(143, 97%, 50%));
+  background: linear-gradient(135deg, #26DE81, hsl(143, 97%, 50%));
   border-radius: 30px;
   cursor: pointer;
   z-index: 1000;
@@ -84,7 +83,7 @@
 }
 
 .scroll-hint:hover {
-   background: linear-gradient(135deg, #26DE81, hsl(143, 91%, 22%));
+  background: linear-gradient(135deg, #26DE81, hsl(143, 91%, 22%));
   transform: translateX(5px);
 }
 
@@ -99,16 +98,20 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(10px);
   }
 }
 
 /* ============= PAGE 1 (UPDATED) ============= */
-.page-1, .page-2 {
+.page-1,
+.page-2 {
   position: relative;
   overflow: hidden;
 }
@@ -116,7 +119,8 @@
 /* Page 1 background image layer with smooth movement - REMOVED FOR DARK THEME */
 
 /* Keep content above background */
-.page-1 .page-content, .page-2 .page-content {
+.page-1 .page-content,
+.page-2 .page-content {
   position: relative;
   z-index: 2;
 }
@@ -125,16 +129,19 @@
   0% {
     transform: scale(1.05) translate3d(0px, 0px, 0);
   }
+
   100% {
     transform: scale(1.12) translate3d(-18px, 12px, 0);
   }
 }
+
 .page-content {
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;
   margin-top: 0;
-  padding-top: 120px; /* Adjusted to push content below navbar */
+  padding-top: 120px;
+  /* Adjusted to push content below navbar */
   padding-left: clamp(16px, 6vw, 80px);
   padding-right: clamp(16px, 6vw, 80px);
   padding-bottom: clamp(40px, 6vw, 80px);
@@ -157,6 +164,7 @@
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -177,27 +185,35 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .main-title {
   font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 900;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   line-height: 1;
   margin-bottom: 15px;
   animation: fadeIn 1s ease-out 0.4s backwards;
 }
 
 .highlight-text {
-  color: #ffffff; /* Changed to white for readability on dark background */
+  color: #ffffff;
+  /* Changed to white for readability on dark background */
 }
 
 .hero-subtitle {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   margin-bottom: 25px;
   animation: fadeIn 1s ease-out 0.5s backwards;
 }
@@ -212,7 +228,8 @@
 .hero-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   margin-bottom: 35px;
   animation: fadeIn 1s ease-out 0.6s backwards;
 }
@@ -227,24 +244,37 @@
 .stat-item {
   text-align: center;
   padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 183, 77, 0.1),
-    rgba(38, 222, 129, 0.1)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 183, 77, 0.1),
+      rgba(38, 222, 129, 0.1));
   border-radius: 16px;
   border: 2px solid rgba(255, 183, 77, 0.2);
   transition: all 0.4s ease;
   animation: fadeInUp 0.8s ease-out backwards;
 }
 
-.stat-item:nth-child(1) { animation-delay: 0.7s; }
-.stat-item:nth-child(2) { animation-delay: 0.8s; }
-.stat-item:nth-child(3) { animation-delay: 0.9s; }
+.stat-item:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.stat-item:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.stat-item:nth-child(3) {
+  animation-delay: 0.9s;
+}
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stat-item:hover {
@@ -256,13 +286,15 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   margin-bottom: 5px;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -281,22 +313,33 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 30px;
   font-size: 0.9rem;
-  color: #ffffff;  /*Changed to white for readability */
+  color: #ffffff;
+  /*Changed to white for readability */
   font-weight: 600;
   transition: all 0.3s ease;
   animation: fadeIn 1s ease-out backwards;
 }
 
-.feature-badge:nth-child(1) { animation-delay: 1s; }
-.feature-badge:nth-child(2) { animation-delay: 1.1s; }
-.feature-badge:nth-child(3) { animation-delay: 1.2s; }
+.feature-badge:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.feature-badge:nth-child(2) {
+  animation-delay: 1.1s;
+}
+
+.feature-badge:nth-child(3) {
+  animation-delay: 1.2s;
+}
 
 .feature-badge:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.feature-badge svg { color: #247011; }
+.feature-badge svg {
+  color: #247011;
+}
 
 /* Right Side - Images */
 .hero-content-right {
@@ -306,8 +349,15 @@
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .image-grid {
@@ -322,13 +372,21 @@
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   position: relative;
-  max-height: 400px; /* Cap max height for large images */
+  max-height: 400px;
+  /* Cap max height for large images */
   animation: imageZoom 1s ease-out 0.5s backwards;
 }
 
 @keyframes imageZoom {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .main-image img,
@@ -336,12 +394,15 @@
 .legacy-right img {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Changed to cover to fill container */
+  object-fit: cover;
+  /* Changed to cover to fill container */
   transition: transform 0.6s ease;
 }
+
 .main-image:hover img,
 .small-image:hover img,
-.legacy-right:hover img { /* Added legacy-right hover */
+.legacy-right:hover img {
+  /* Added legacy-right hover */
   transform: scale(1.1);
 }
 
@@ -379,12 +440,18 @@
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
   position: relative;
-  max-height: 200px; /* Cap max height for small images */
+  max-height: 200px;
+  /* Cap max height for small images */
   animation: imageZoom 1s ease-out backwards;
 }
 
-.small-image:nth-child(1) { animation-delay: 0.7s; }
-.small-image:nth-child(2) { animation-delay: 0.9s; }
+.small-image:nth-child(1) {
+  animation-delay: 0.7s;
+}
+
+.small-image:nth-child(2) {
+  animation-delay: 0.9s;
+}
 
 .floating-card {
   position: absolute;
@@ -403,8 +470,15 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .card-icon {
@@ -434,7 +508,8 @@
 .page-2 {
   height: auto;
   min-height: 100vh;
-  overflow-y: auto; /* Added to allow scrolling if content overflows */
+  overflow-y: auto;
+  /* Added to allow scrolling if content overflows */
   flex-direction: column;
   background: #0E3A5A !important;
 }
@@ -451,7 +526,8 @@
   justify-content: flex-start;
   gap: 0;
   padding-top: 120px;
-  padding-bottom: 0px; /* Further reduced padding */
+  padding-bottom: 0px;
+  /* Further reduced padding */
 }
 
 
@@ -459,18 +535,21 @@
 /* Vision & Mission */
 .vm-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased minmax width for cards */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Increased minmax width for cards */
   gap: 20px;
   width: 100%;
 }
 
 .vm-card {
   background: #ffffff;
-  padding: 30px; /* Increased padding */
+  padding: 30px;
+  /* Increased padding */
   border-radius: 24px;
   color: #1a1a1a;
   position: relative;
-  /* overflow: hidden; */ /* Removed */
+  /* overflow: hidden; */
+  /* Removed */
   transition: all 0.5s ease;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
@@ -488,8 +567,15 @@
 }
 
 @keyframes glow {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-20px, 20px); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 20px);
+  }
 }
 
 .vm-card:hover {
@@ -520,13 +606,15 @@
   font-weight: 800;
   position: relative;
   z-index: 2;
-  color: #1a1a1a; /* Changed back to dark for readability on white background */
+  color: #1a1a1a;
+  /* Changed back to dark for readability on white background */
 }
 
 .vm-card p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #555; /* Changed back to dark for readability on white background */
+  color: #555;
+  /* Changed back to dark for readability on white background */
   position: relative;
   z-index: 2;
 }
@@ -545,7 +633,8 @@
   align-items: center;
   gap: 12px;
   font-size: 1.05rem;
-  color: #555; /* Changed back to dark for readability on white background */
+  color: #555;
+  /* Changed back to dark for readability on white background */
   position: relative;
   z-index: 2;
 }
@@ -560,7 +649,8 @@
 .legacy-highlights {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Increased gap for better alignment */
+  gap: 20px;
+  /* Increased gap for better alignment */
 }
 
 .highlight-item {
@@ -586,14 +676,16 @@
 
 .highlight-item h4 {
   font-size: 1.2rem;
-  color: #1a1a1a; /* Changed back to dark for readability on white background */
+  color: #1a1a1a;
+  /* Changed back to dark for readability on white background */
   margin-bottom: 5px;
   font-weight: 700;
 }
 
 .highlight-item p {
   font-size: 0.9rem;
-  color: #666; /* Changed back to dark for readability on white background */
+  color: #666;
+  /* Changed back to dark for readability on white background */
   line-height: 1.4;
 }
 
@@ -601,7 +693,8 @@
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  max-height: 300px; /* Increased max height */
+  max-height: 300px;
+  /* Increased max height */
   background: #fff;
 }
 
@@ -676,7 +769,8 @@
   .page {
     width: 100%;
     height: auto;
-    min-height: 100vh; /* Ensure some minimum height for content */
+    min-height: 100vh;
+    /* Ensure some minimum height for content */
     overflow-y: visible;
     flex-shrink: 1;
     padding-bottom: 50px;
@@ -691,7 +785,8 @@
     flex-direction: column;
     gap: 50px;
     padding: 0 5% 60px;
-    transform: none; /* Remove scaling on mobile */
+    transform: none;
+    /* Remove scaling on mobile */
   }
 
   .hero-content-left,
@@ -708,8 +803,10 @@
   }
 
   .main-image {
-    height: auto; /* Allow height to be determined by image content */
-    max-height: 400px; /* Cap max height for large images */
+    height: auto;
+    /* Allow height to be determined by image content */
+    max-height: 400px;
+    /* Cap max height for large images */
   }
 
   .side-images {
@@ -717,8 +814,10 @@
   }
 
   .small-image {
-    height: auto; /* Allow height to be determined by image content */
-    max-height: 200px; /* Cap max height for small images */
+    height: auto;
+    /* Allow height to be determined by image content */
+    max-height: 200px;
+    /* Cap max height for small images */
   }
 
   .floating-card {
@@ -735,6 +834,7 @@
     animation: none;
     transform: scale(1.06);
   }
+
   .vm-section,
   .legacy-section {
     grid-template-columns: 1fr;
@@ -743,33 +843,41 @@
 
 @media (max-width: 480px) {
   .page-content {
-    padding: 0 4% 40px; /* Slightly less padding for very small screens */
-    gap: 30px; /* Reduce gap */
+    padding: 0 4% 40px;
+    /* Slightly less padding for very small screens */
+    gap: 30px;
+    /* Reduce gap */
   }
 
   .vm-card {
-    padding: 30px; /* Reduce padding for vm cards */
+    padding: 30px;
+    /* Reduce padding for vm cards */
   }
 
   .vm-card h3 {
-    font-size: 1.5rem; /* Smaller heading for vm cards */
+    font-size: 1.5rem;
+    /* Smaller heading for vm cards */
   }
 
   .vm-card p,
   .mission-list li {
-    font-size: 0.9rem; /* Smaller text for vm cards */
+    font-size: 0.9rem;
+    /* Smaller text for vm cards */
   }
 
   .vm-section {
-    gap: 30px; /* Reduce gap in vm section */
+    gap: 30px;
+    /* Reduce gap in vm section */
   }
 
   .section-title {
-    font-size: 1.8rem; /* Smaller title for legacy section */
+    font-size: 1.8rem;
+    /* Smaller title for legacy section */
   }
 
   .legacy-text {
-    font-size: 0.95rem; /* Smaller text for legacy section */
+    font-size: 0.95rem;
+    /* Smaller text for legacy section */
   }
 
   .cta-button {
@@ -778,11 +886,13 @@
   }
 
   .main-title {
-    font-size: clamp(2.5rem, 8vw, 4rem); /* Further adjust main title */
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    /* Further adjust main title */
   }
 
   .hero-subtitle {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Further adjust hero subtitle */
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    /* Further adjust hero subtitle */
   }
 
   .hero-description {
@@ -790,11 +900,13 @@
   }
 
   .stats-container {
-    gap: 15px; /* Reduce gap in stats container */
+    gap: 15px;
+    /* Reduce gap in stats container */
   }
 
   .stat-number {
-    font-size: 2rem; /* Smaller stat numbers */
+    font-size: 2rem;
+    /* Smaller stat numbers */
   }
 
   .feature-badge {
@@ -846,20 +958,23 @@
   gap: 20px;
   align-items: center;
   width: 100%;
-  padding: 0 40px; /* Further reduced vertical padding */
+  padding: 0 40px;
+  /* Further reduced vertical padding */
   background-color: #0E3A5A;
 }
 
 .legacy-left .section-title {
   margin-bottom: 24px;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   text-align: left;
 }
 
 .legacy-description {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #ffffff; /* Changed to white for readability */
+  color: #ffffff;
+  /* Changed to white for readability */
   margin-bottom: 48px;
   text-align: left;
 }
@@ -895,13 +1010,15 @@
 .legacy-card-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #102A43; /* Changed back to dark for readability on white background */
+  color: #102A43;
+  /* Changed back to dark for readability on white background */
   margin-bottom: 4px;
 }
 
 .legacy-card-subtitle {
   font-size: 0.9rem;
-  color: #718096; /* Changed back to dark for readability on white background */
+  color: #718096;
+  /* Changed back to dark for readability on white background */
 }
 
 .legacy-right {

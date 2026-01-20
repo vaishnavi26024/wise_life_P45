@@ -24,7 +24,8 @@ body {
 body {
   font-family: Inter, sans-serif;
   overflow-x: hidden;
-  background-color: #0E3A5A; /* New global background color */
+  background-color: #0E3A5A;
+  /* New global background color */
   color: #f0f0f0;
 }
 
@@ -59,11 +60,9 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 44, 77, 0.95),
-    rgba(11, 44, 77, 0.7)
-  );
+  background: linear-gradient(to bottom,
+      rgba(11, 44, 77, 0.95),
+      rgba(11, 44, 77, 0.7));
 }
 
 .hero-content {
@@ -90,12 +89,14 @@ body {
   text-transform: uppercase;
   line-height: 1.6;
 }
+
 .tagline-white {
   color: #ffffff;
 }
 
 .tagline-accent {
-  color: #34d399; /* Teal accent */
+  color: #34d399;
+  /* Teal accent */
 }
 
 .hero-scroll {
@@ -119,9 +120,11 @@ body {
 [class^="animate-stats-"] .stat-card:nth-child(1) {
   animation-delay: 0.1s;
 }
+
 [class^="animate-stats-"] .stat-card:nth-child(2) {
   animation-delay: 0.25s;
 }
+
 [class^="animate-stats-"] .stat-card:nth-child(3) {
   animation-delay: 0.4s;
 }
@@ -131,6 +134,7 @@ body {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -143,47 +147,58 @@ body {
   padding: 28px 32px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  color: #ffffff; /* Default text color for the card */
+  color: #ffffff;
+  /* Default text color for the card */
 }
 
 .stat-card h3 {
   font-size: 2.6rem;
-  color: #ffffff; /* Explicitly set to white */
+  color: #ffffff;
+  /* Explicitly set to white */
 }
 
 .stat-card p {
-  color: rgba(255, 255, 255, 0.8); /* Slightly less bright white */
+  color: rgba(255, 255, 255, 0.8);
+  /* Slightly less bright white */
 }
 
 /* ---------------- PRODUCTS ---------------- */
 .products {
   background-color: #0E3A5A;
   position: relative;
-  min-height: 105svh; /* Slightly increased height */
+  min-height: 105svh;
+  /* Slightly increased height */
 }
 
 .products-heading {
   position: absolute;
-  top: 40px; /* Add some top padding */
-  left: 40px; /* Add some left padding */
+  top: 40px;
+  /* Add some top padding */
+  left: 40px;
+  /* Add some left padding */
   z-index: 10;
-  text-align: left; /* Align text to the left */
-  color: #ffffff; /* Ensure text is visible over dark background */
+  text-align: left;
+  /* Align text to the left */
+  color: #ffffff;
+  /* Ensure text is visible over dark background */
 }
 
 .products-heading h2 {
   font-size: clamp(2rem, 5vw, 3rem);
-  color: #ffffff; /* Explicitly set to white */
+  color: #ffffff;
+  /* Explicitly set to white */
 }
 
 .products-heading p {
-  color: #ffffff; /* Explicitly set to white */
+  color: #ffffff;
+  /* Explicitly set to white */
 }
 
 /* CAROUSEL */
 .products-carousel {
   position: relative;
-  height: 90vh; /* Increased height for larger images/videos */
+  height: 90vh;
+  /* Increased height for larger images/videos */
   overflow: hidden;
 }
 
@@ -222,16 +237,19 @@ body {
   from {
     transform: scale(1);
   }
+
   to {
     transform: scale(1.15);
   }
 }
 
 @keyframes bounce {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(10px);
   }
@@ -242,15 +260,48 @@ body {
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 120px 24px;
+  }
+
+  /* Reset layout for mobile */
+  .hero-logo {
+    margin: 0 auto;
+    width: 240px;
   }
 
   .hero-right {
     align-items: center;
-    margin-top: 80px;
-    padding-top: 80px;
+    margin-top: 60px;
+    padding-top: 0;
   }
 
   .products-carousel {
     height: 60vh;
+  }
+
+  .products-heading {
+    top: 24px;
+    left: 24px;
+  }
+
+  .product-slide h3 {
+    font-size: 2rem;
+    left: 24px;
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+
+  .stat-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .stat-card h3 {
+    font-size: 2rem;
   }
 }

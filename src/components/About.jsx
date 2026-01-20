@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Zap, Target, Award, Shield, ArrowRight, ChevronRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import "../components/About.css";
 
-const About = ({ onHorizontalScrollStart, onUnlockScroll, isAboutSectionActive }) => {
+const About = ({ externalPage = 0 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -18,6 +18,13 @@ const About = ({ onHorizontalScrollStart, onUnlockScroll, isAboutSectionActive }
     };
   }, []);
 
+  // Sync with parent scroll
+  useEffect(() => {
+    if (!isMobile) {
+      goToPage(externalPage);
+    }
+  }, [externalPage, isMobile]);
+
   const goToPage = (page) => {
     if (!isMobile) {
       if (!isAnimating && page !== currentPage) {
@@ -30,19 +37,18 @@ const About = ({ onHorizontalScrollStart, onUnlockScroll, isAboutSectionActive }
 
   const handleExploreClick = () => {
     goToPage(1);
+    // Ideally, scrolling down naturally handles this now.
+    // But click support remains valid for UX.
   };
 
   const handleGoBack = () => {
     goToPage(0);
-    if (onUnlockScroll) {
-      onUnlockScroll();
-    }
   };
 
   return (
     <div className={`horizontal-container ${currentPage !== 0 ? 'scrolling-active' : ''}`}>
       {/* -- CONTROLS -- */}
-      {isAboutSectionActive && (
+      {!isMobile && (
         <>
           {!isMobile && (
             <div className="page-indicator">
@@ -164,7 +170,7 @@ const About = ({ onHorizontalScrollStart, onUnlockScroll, isAboutSectionActive }
                 </div>
                 <h3>Our Vision</h3>
                 <p>To become a leading, trusted
-                   distribution partner in clean energy and sustainable living products across
+                  distribution partner in clean energy and sustainable living products across
                   India
                 </p>
               </div>

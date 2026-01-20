@@ -16,15 +16,30 @@
 }
 
 /* Stagger Delays */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
 
 /* --- Layout --- */
 .contact-section {
-  background-color: #0E3A5A; /* New background color */
+  background-color: #0E3A5A;
+  /* New background color */
   padding: 80px 20px;
   min-height: 100vh;
   display: flex;
@@ -101,19 +116,43 @@
   gap: 40px;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .grid-layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .form-side {
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
   }
 }
 
-.form-side, .info-side {
+.form-side,
+.info-side {
   padding: 0 50px;
 }
 
-@media (min-width: 1024px) {
-  .form-side { border-right: 1px solid #f1f5f9; }
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 16px;
+  }
+
+  .contact-card {
+    border-radius: 20px;
+    padding: 30px 0;
+  }
+
+  .form-side,
+  .info-side {
+    padding: 0 24px;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+  }
 }
 
 /* --- Input Animation --- */
@@ -152,7 +191,7 @@
   border-color: #14b8a6;
 }
 
-.input-field:focus ~ .input-label {
+.input-field:focus~.input-label {
   color: #14b8a6;
 }
 
@@ -198,7 +237,8 @@
 /* --- Button Styling --- */
 .submit-btn-compact {
   width: 100%;
-  background: #14b8a6; /* Teal Green */
+  background: #14b8a6;
+  /* Teal Green */
   color: white;
   padding: 18px;
   margin-top: 24px;

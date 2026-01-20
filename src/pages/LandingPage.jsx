@@ -14,7 +14,7 @@ import './LandingPage.css';
 const sections = ['home', 'home-products', 'about', 'products', 'business', 'contact', 'footer'];
 
 const LandingPage = () => {
-  const [isAboutSectionActive, setIsAboutSectionActive] = useState(false);
+  // const [isAboutSectionActive, setIsAboutSectionActive] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const isScrollingRef = useRef(false);
@@ -29,6 +29,7 @@ const LandingPage = () => {
     business: useRef(null),
     contact: useRef(null),
     footer: useRef(null),
+    aboutWrapper: useRef(null),
   };
 
   const scrollToSection = (sectionName) => {
@@ -47,84 +48,61 @@ const LandingPage = () => {
     }
     const hash = location.hash.replace('#', '');
     if (hash && sections.includes(hash)) {
-        setTimeout(() => scrollToSection(hash), 100);
+      setTimeout(() => scrollToSection(hash), 100);
     }
     initialLoadRef.current = false;
   }, [location.hash, navigate]);
 
 
+  /* ----------------------------------------------------
+     SCROLL HANDLER FOR "ABOUT" SECTION (STICKY)
+  ----------------------------------------------------- */
+  // 0 or 1 (Page 1 or Page 2)
+  const [aboutPage, setAboutPage] = useState(0);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target.id === 'about') {
-            if (justUnlockedAbout.current) {
-              return; // Ignore intersection changes immediately after unlock
-            }
-            setIsAboutSectionActive(entry.isIntersecting);
-          }
+    const handleScroll = () => {
+      if (!sectionRefs.aboutWrapper.current) return;
 
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.id;
-            if (!isScrollingRef.current) {
-              if (!initialLoadRef.current || location.hash !== '') {
-                navigate(`#${sectionId}`, { replace: true });
-              }
-            }
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0,
-      }
-    );
+      const rect = sectionRefs.aboutWrapper.current.getBoundingClientRect();
+      const offsetTop = rect.top;       // Distance from top of viewport
+      const height = rect.height;       // Total height (250vh)
+      const windowHeight = window.innerHeight;
 
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    });
+      // START: When section hits top (0).
+      // END:   When bottom of section hits bottom of screen (or similar).
 
-    return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+      // Calculate progress: 0 at start, 1 at end of scroll
+      // We want the interaction to happen while it's "sticky".
+      // Sticky is active roughly from top=0 until bottom=windowHeight.
+      // Since height = 250vh and sticky is 100vh, we track the scrolling.
+
+      // A simple logic: 
+      // If (top < 0) we are scrolling INSIDE the wrapper.
+      // If we are significantly past the start, switch to Page 2.
+
+      if (offsetTop <= 0 && offsetTop > -(height - windowHeight)) {
+        // Inside the sticky zone
+        // Let's say we switch after scrolling 30% of the viewport height into it
+        const scrollDistance = Math.abs(offsetTop);
+        // Switch point: scroll 50vh down
+        if (scrollDistance > windowHeight * 0.5) {
+          setAboutPage(1);
+        } else {
+          setAboutPage(0);
         }
-      });
+      } else if (offsetTop > 0) {
+        // Above the section
+        setAboutPage(0);
+      } else {
+        // Passed the section
+        setAboutPage(1);
+      }
     };
-  }, [navigate, location.hash]);
 
-  useEffect(() => {
-    if (isAboutSectionActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isAboutSectionActive]);
-
-
-  const handleAboutScrollEnd = () => {
-    setIsAboutSectionActive(false);
-    scrollToSection('products');
-  };
-
-  const handleAboutScrollStart = () => {
-    setIsAboutSectionActive(false);
-    scrollToSection('home-products');
-  };
-
-  const handleUnlockScroll = () => {
-    setIsAboutSectionActive(false);
-    justUnlockedAbout.current = true;
-    setTimeout(() => {
-      justUnlockedAbout.current = false;
-    }, 100); // Debounce to allow user to scroll away
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="landing-wrapper">
@@ -134,14 +112,11 @@ const LandingPage = () => {
       <section id="home-products" ref={sectionRefs['home-products']}>
         <HomeProductSection />
       </section>
-      <section id="about" ref={sectionRefs.about}>
-        <About
-          onHorizontalScrollEnd={handleAboutScrollEnd}
-          onHorizontalScrollStart={handleAboutScrollStart}
-          onUnlockScroll={handleUnlockScroll}
-          isAboutSectionActive={isAboutSectionActive}
-        />
-      </section>
+
+     
+          <section id="about" ref={sectionRefs.about}>
+            <About externalPage={aboutPage} />
+          </section>
       <section id="products" ref={sectionRefs.products}>
         <Products />
       </section>

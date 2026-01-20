@@ -12,6 +12,7 @@
     transform: translateY(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -26,17 +27,53 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: #0b2c4d; 
+  background-color: #0b2c4d;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
+
+/* MENU TOGGLE (HIDDEN DESKTOP) */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
 /* ---------- MOBILE & SMALL LAPTOP FIX ---------- */
 @media (max-width: 768px) {
   .navbar {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
+  /* Show toggle */
+  .menu-toggle {
+    display: block;
+    z-index: 1001;
+    /* Above mobile menu */
+  }
+
+  /* Mobile Links Overlay */
   .nav-links {
-    gap: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 75%;
+    /* Slide in mostly covering */
+    max-width: 300px;
+    background-color: rgba(11, 44, 77, 0.98);
+    backdrop-filter: blur(10px);
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
   }
 }
 
@@ -56,11 +93,13 @@
 }
 
 .logo-wise {
-  color: #ffffff; /* White */
+  color: #ffffff;
+  /* White */
 }
 
 .logo-life {
-  color: #2ec4b6; /* Teal accent */
+  color: #2ec4b6;
+  /* Teal accent */
   margin-left: 4px;
 }
 
@@ -114,5 +153,6 @@
 .nav-item-content {
   display: flex;
   align-items: center;
-  gap: 8px; /* Adjust as needed for spacing between icon and text */
+  gap: 8px;
+  /* Adjust as needed for spacing between icon and text */
 }

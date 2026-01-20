@@ -28,16 +28,16 @@ export default function Products() {
           <button onClick={() => setCategory("EV")}>EV</button>
         </div>
 
-         /* BACKGROUND VIDEO */ 
-        { <video
+        {/* BACKGROUND VIDEO */}
+        <video
           className="wl-bg-video"
           autoPlay
           muted
           loop
           playsInline
         >
-          <source src={bgVideo} type="video/mp4" /> 
-        </video>}
+          <source src={bgVideo} type="video/mp4" />
+        </video>
 
         {/* PRODUCTS CONTENT */}
         <div className="wl-products-inner">
