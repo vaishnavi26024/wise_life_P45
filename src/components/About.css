@@ -925,7 +925,7 @@
     font-size: 0.8rem;
   }
    .legacy-right {
-    height: 240px;   /* still big, but fits small screens */
+    height: 300px;   /* still big, but fits small screens */
   }
 }
 
@@ -1047,14 +1047,22 @@
   /* Changed back to dark for readability on white background */
 }
 
-.legacy-right {
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-}
+/* =============================== */
+/* ABOUT PAGE – LEGACY IMAGE FIX   */
+/* MOBILE ONLY                     */
+/* =============================== */
+@media (max-width: 768px) {
 
-.legacy-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  .legacy-right {
+    width: 100%;
+    max-height: none;
+    border-radius: 20px;
+  }
+
+  .legacy-right img {
+    width: 100%;
+    height: 220px;        /* Proper visible height */
+    object-fit: cover;   /* Fill nicely */
+    border-radius: 20px;
+  }
 }
