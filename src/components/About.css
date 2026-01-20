@@ -1046,17 +1046,7 @@
 /* MOBILE ONLY                     */
 /* =============================== */
 @media (max-width: 768px) {
-
   .legacy-right {
-    width: 100%;
-    max-height: none;
-    border-radius: 20px;
-  }
-
-  .legacy-right img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 20px;
+    display: none;
   }
 }
